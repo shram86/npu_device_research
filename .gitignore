@@ -1,0 +1,23 @@
+# Local OS/editor files
+.DS_Store
+.idea/
+.vscode/
+# Python and build output
+__pycache__/
+*.py[cod]
+.venv/
+*.o
+*.so
+/yolo26n/yolo_camera
+/midas/midas_camera
+/pwcnet/pwcnet_camera
+/blazepose/blazepose_camera
+# Camera recordings and validation scratch data
+/motion_detect_opencv/events/
+/motion_detect_opencv/monitor/
+/yolo26n/input_0.dat
+/yolo26n/validation_inputs/
+/yolo26n/validation_npu*/
+/yolo26n/output_*.txt
+/yolo26n/vpm_run
+*.log

@@ -1,0 +1,79 @@
+body {
+      background: #111827;
+      color: #f9fafb;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 24px;
+    }
+    main { max-width: 900px; margin: auto; }
+    h1 { font-size: 1.6rem; }
+    .card {
+      background: #1f2937;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    img {
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      background: #000;
+      border-radius: 8px;
+    }
+    .muted { color: #9ca3af; }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .status-grid strong { color: #93c5fd; }
+
+    a { color: #93c5fd; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 800px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    .event {
+      background: #111827;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .event img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+    #show-more {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 24px;
+      background: #2563eb;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #show-more:hover { background: #1d4ed8; }
+    #show-more:disabled { opacity: 0.5; cursor: wait; }
+
+/* Keep live monitoring and recording cards readable on narrow screens. */
+body { line-height: 1.5; }
+h1 { letter-spacing: -0.03em; margin-bottom: 8px; }
+h2 { font-size: 1.1rem; margin-top: 0; }
+.card { border: 1px solid #334155; box-shadow: 0 8px 24px #0002; }
+.status-grid > div { padding: 10px; background: #111827; border-radius: 8px; }
+.status-grid strong { display: block; margin-top: 4px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #93c5fd; outline-offset: 4px; }
+@media (max-width: 480px) { body { padding: 12px; } .card { padding: 14px; } }

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orange Pi Motion Monitor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Orange Pi Motion Monitor</h1>
+    <div class="card">
+      <h2>System status</h2>
+      <div class="status-grid">
+        <div>Camera: <strong id="camera-status">Checking...</strong></div>
+        <div>Motion: <strong id="motion-status">Checking...</strong></div>
+        <div>Recording: <strong id="recording-status">Checking...</strong></div>
+        <div>Storage: <strong id="storage-status">Checking...</strong></div>
+        <div>Saved events: <strong id="event-count">Checking...</strong></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Live camera</h2>
+      <img src="/stream" alt="Live camera stream">
+      <p class="muted">Motion regions are outlined in red.</p>
+    </div>
+    <div class="card">
+      <h2>Recordings</h2>
+      <div id="recordings-gallery" class="gallery">
+      {% if events %}
+        {% for event in events %}
+        <div class="event">
+          <a href="/events/{{ event.id }}/peak.jpg" target="_blank">
+            <img
+              src="/events/{{ event.id }}/peak.jpg"
+              alt="Motion event snapshot"
+              loading="lazy"
+            >
+          </a>
+          <p>{{ event.timestamp }}</p>
+          {% if event.has_video %}
+          <a href="/events/{{ event.id }}/motion.avi" download>
+            Download video
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% else %}
+      <p class="muted">No completed motion events yet.</p>
+      {% endif %}
+      </div>
+      <button id="show-more" type="button" style="display:none">
+        Show more
+      </button>
+    </div>
+  </main>
+<script src="{{ url_for('static', filename='dashboard.js') }}" defer></script>
+</body>
+</html>
