@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.so
+events/
+models/*.nb
+models/*.onnx
+models/*.npz

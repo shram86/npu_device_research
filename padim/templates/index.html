@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>PaDiM Monitor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body><main>
+  <header><div><p class="eyebrow">LIVE INSPECTION</p><h1>PaDiM Monitor</h1></div><span id="connection">Connecting…</span></header>
+  <section class="preview" style="aspect-ratio: {{ width }} / {{ height }}" aria-label="Live camera and ROI heatmap">
+    <img id="video" src="{{ url_for('video_feed') }}?mode=heatmap" width="{{ width }}" height="{{ height }}" alt="Camera view with PaDiM ROI">
+  </section>
+  <div class="view-controls" role="group" aria-label="Display mode">
+    <button data-mode="original" aria-pressed="false">Original</button>
+    <button data-mode="heatmap" aria-pressed="true">Heatmap</button>
+    <button data-mode="side-by-side" aria-pressed="false">Side by side</button>
+  </div>
+  <p class="legend">Strong responses only · fixed scale <span>{{ heatmap_min }} → {{ heatmap_max }}</span></p>
+  <section class="readout">
+    <div class="status-row"><span>Status</span><strong id="status" data-state="UNKNOWN" role="status">UNKNOWN</strong></div>
+    <div class="metrics">
+      <div>Anomaly score<strong id="score">—</strong></div>
+      <div>Threshold<strong id="threshold">—</strong></div>
+      <div>Camera FPS<strong id="camera-fps">—</strong></div>
+      <div>Inference FPS<strong id="inference-fps">—</strong></div>
+      <div>Inference pipeline<strong id="latency">—</strong></div>
+      <div>Persistence<strong id="persistence">—</strong></div>
+      <div>CPU temperature<strong id="cpu-temperature">—</strong></div>
+      <div>NPU temperature<strong id="npu-temperature">—</strong></div>
+    </div>
+    <details class="timing-details"><summary>Latency breakdown</summary>
+      <dl id="latency-breakdown"></dl>
+      <p class="muted">Pipeline includes preprocessing, backend and output checks. PaDiM CPU scoring follows ResNet feature extraction.</p>
+    </details>
+    <p id="calibration" hidden>Experimental threshold — validate on held-out device images.</p>
+    <p id="details" role="status" aria-live="polite">Waiting for inference…</p>
+    <div class="actions"><button id="heatmap-toggle" aria-pressed="true">Heatmap ON</button><button id="reset">Reset alarm</button></div>
+  </section>
+  <section class="readout" aria-labelledby="events-heading">
+    <div class="status-row"><h2 id="events-heading">Saved events</h2><span id="event-count">0 events</span></div>
+    <p class="muted">Snapshots saved when an alarm triggers. Open a preview to inspect it.</p>
+    <div id="events-gallery" class="gallery"></div>
+    <p id="events-message" class="muted" role="status">Loading events…</p>
+    <button id="events-more" hidden>Load older events</button>
+  </section>
+  <footer>{{ width }} × {{ height }} · <span id="backend">NB</span> · One shared inference worker</footer>
+</main></body></html>

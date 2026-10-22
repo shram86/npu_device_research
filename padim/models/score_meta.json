@@ -1,0 +1,29 @@
+{
+    "Inputs": {
+        "features_12": {
+            "name": "features",
+            "shape": [
+                1,
+                100,
+                64,
+                64
+            ],
+            "format": "nchw",
+            "dtype": "float16"
+        }
+    },
+    "Outputs": {
+        "attach_distance_squared/out0_0": {
+            "name": "attach_distance_squared/out0",
+            "shape": [
+                1,
+                1,
+                64,
+                64
+            ],
+            "format": "nchw",
+            "dtype": "float16"
+        }
+    },
+    "Recurrent_connections": {}
+}

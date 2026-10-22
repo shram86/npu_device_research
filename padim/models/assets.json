@@ -1,0 +1,32 @@
+{
+  "statistics": {
+    "source": "padim/padim_results/padim_statistics.npz",
+    "filename": "padim_statistics.npz",
+    "sha256": "b40b7ec075cb1dc07db05781fb360e06e331f45a503bfcbc8830778dbd7f4678"
+  },
+  "onnx": {
+    "source": "resnet18/resnet18_features.onnx",
+    "filename": "resnet18_features.onnx",
+    "sha256": "121f95754f39e9be3e64c6eb5d73c3777488880b5be53b2dc3a87718170b815f"
+  },
+  "nb_selected": {
+    "filename": "network_binary_v4.nb",
+    "sha256": "16effa8708e5f1d26e456cb505a741fc253ea4b9d590f921c96abf6b4ff7d9bd",
+    "metadata_filename": "nbg_meta.json",
+    "metadata_sha256": "a1c0811c53f420440ed303f86e440e1984a28fe8db225633d3f744577006b1c6",
+    "matching_local_build": "build/resnet18v4/resnet18v4_nbg_unify",
+    "historical_experiment_build_verified": false,
+    "note": "Model and metadata supplied while project was being created; config selects v4. Historical experiment-B build is unknown."
+  },
+  "score_nb": {
+    "filename": "network_binary_score.nb",
+    "sha256": "86f598dc786dffad9eb11834228821718af1fa21e8f163028d14bccdb30b0f29",
+    "metadata_filename": "score_meta.json",
+    "metadata_sha256": "e0ba3dc7d3bdf67c70bc2436ca2d0afbd189d02ec2935beaf025fc868d5b8bad",
+    "matching_local_build": "build/padim_score/padim_score_nbg_unify",
+    "matches_local_build": true,
+    "input": "FP16 NCHW [1,100,64,64] selected features",
+    "output": "FP16 NCHW [1,1,64,64] squared distances",
+    "embedded_statistics_verified": false
+  }
+}
